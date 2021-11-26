@@ -42,7 +42,7 @@ This project is made up of mainly two parts: Simulating Ising model on 2D SQL & 
 The source code of the Ising model is made with C, and you can use it with the python3 wrapper, "run_single.py".
 With "run_single.py", you can measure the magnetization (order parameter), susceptibility and calculate the 
 average values and errors of them.
-For extensive Monte Carlo simulations at Tc \approx 2.269185, you can use "run_at_TC.py"
+For extensive Monte Carlo simulations at $T_c \approx 2.269185$, you can use "run_at_TC.py"
 
 The basic command line usage:
 ```
