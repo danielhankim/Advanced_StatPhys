@@ -1,5 +1,41 @@
 # Advanced_StatPhys
 
+## Preliminaries
+Before getting started with your simulation, please create the directories you need to save and read your data as follows:
+```
+project
+│   README.md
+|   figs
+│   src
+|   ...
+└───data
+      └───avg
+      |     └───mag
+      |     |    └───L128
+      |     |    └───L64
+      |     |    └───L32
+      |     |    └───L16
+      |     |    └───L8
+      |     └───sus
+      |          └───L128
+      |          └───L64
+      |          └───L32
+      |          └───L16
+      |          └───L8
+      └───mag
+      |    └───L128
+      |    └───L64
+      |    └───L32
+      |    └───L16
+      |    └───L8
+      └───sus
+           └───L128
+           └───L64
+           └───L32
+           └───L16
+           └───L8
+```
+
 ## Introduction
 This project is made up of mainly two parts: Simulating Ising model on 2D SQL & Finite-size scaling analysis.
 
