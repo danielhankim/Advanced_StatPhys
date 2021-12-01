@@ -36,8 +36,8 @@ int main(int argc, char *argv[])
 	N = L*L;
 	int **adj = (int **)malloc(sizeof(int *) *N);
 	int *spin_config = (int *)malloc(sizeof(int)*N);
-	//2D square lattice with PBC
 	
+	//2D square lattice with PBC
     for(i = 0; i < N; i++){
 		adj[i] = (int *)malloc(sizeof(int)*4);
 	}
@@ -51,6 +51,7 @@ int main(int argc, char *argv[])
 		adj[i][3] = i + L;//down
 		if(adj[i][3] > N-1){adj[i][3] += - L*L;}	
 	}
+	//building 2D SQLwPBC done
 	
     for(iter = 0; iter < N_ITER; iter++)
     {
