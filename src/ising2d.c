@@ -20,12 +20,10 @@ int main(int argc, char *argv[])
  	init_genrand64((unsigned)time(NULL));
  	FILE *fp1, *fp2;
  	char m1_file[100],E1_file[100];
-    int avg_t, steady_t, MCSS_max, N, spin_sum, abs_spin_sum, 
-        target, MCSS, L, i, j, k, n, E_delta, tmp, s, iter;
+    int avg_t, steady_t, MCSS_max, N, spin_sum,
+        target, MCSS, L, i, j, n, E_delta, tmp, iter;
     
-    double m, m_abs, m1, m2, m4,
-           Tc, J, flip_prob, flip_prob1, flip_prob2,
-	       E1, E2, cv, rnd, t, u, chi;
+    double m1, E1, flip_prob, pval1, pval2, rnd, t, u; 
 
 	avg_t = MEASURE_T;
     steady_t = THERMALIZATION_T;
@@ -57,7 +55,6 @@ int main(int argc, char *argv[])
     for(iter = 0; iter < N_ITER; iter++)
     {
         init_spin_values(spin_config, L);
-		//s=0;
         sprintf(m1_file, "./data/mag/L%d/mag_%f.dat", L, t);
         //sprintf(E1_file, "./eng/L%d/e1/e1_%f.dat", L, t);
         
@@ -76,7 +73,8 @@ int main(int argc, char *argv[])
                     tmp += spin_config[adj[target][j]];
                 }
                 E_delta = 2*spin_config[target]*tmp;
-
+				//3.-1) if energy becomes lower or in the same, we accept the new configuration
+				//3.-2) however, if energy becomes higher, we flip it with a given probability "flip_prob"
                 if(E_delta <= 0){spin_config[target] = -spin_config[target];}
                 else{
                     if(abs(tmp) == 2){
@@ -92,7 +90,7 @@ int main(int argc, char *argv[])
                 }
             }
 
-            //4.after cool down
+            //4. we measure margentization after we reach the steady state
             if(MCSS > steady_t-1){//if the system is thermalized enough
 
                 m1 = calc_m1(spin_config, N);
